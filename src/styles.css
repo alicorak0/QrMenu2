@@ -1,0 +1,23 @@
+
+@import '../../qrmenu/node_modules/ngx-toastr/toastr.css';
+
+
+
+:root {
+  --white-color: #fff;
+  --black-color: #000;
+  --body-font: "Poppins", sans-serif;
+  --body-font: 'Poppins', sans-serif;
+  --h1-font-size: 1.75rem;
+  --normal-font-size: 1rem;
+  --small-font-size: 0.813rem;
+  --font-medium: 11700;
+}
+body{
+    margin: 0px;
+    padding: 0px;
+}
+
+
+
+
