@@ -1,0 +1,73 @@
+<div class="menu-wrapper">
+ <aside class="sidebar">
+    <ul>
+        <li>
+      <button 
+        [routerLink]="['/categories', 'burgers']" 
+        class="sidebar-btn" 
+        [class.active]="activeKey === 'burgers'">
+        Burgerler
+      </button>
+    </li>
+
+    <li>
+      <button 
+        [routerLink]="['/categories', 'snacks']" 
+        class="sidebar-btn" 
+        [class.active]="activeKey === 'snacks'">
+        Aperatifler
+      </button>
+    </li>
+
+    <li>
+      <button 
+        [routerLink]="['/categories', 'drinks']" 
+        class="sidebar-btn" 
+        [class.active]="activeKey === 'drinks'">
+        İçecekler
+      </button>
+    </li>
+
+    <li>
+      <button 
+        [routerLink]="['/categories', 'desserts']" 
+        class="sidebar-btn" 
+        [class.active]="activeKey === 'desserts'">
+        Tatlılar
+      </button>
+    </li>
+
+    <li>
+      <button 
+        [routerLink]="['/categories', 'sauces']" 
+        class="sidebar-btn" 
+        [class.active]="activeKey === 'sauces'">
+        Soslar
+      </button>
+    </li>
+
+    </ul>
+  </aside>
+
+
+
+   <!-- Main Content -->
+  <main class="menu-content">
+  <div class="category-title">
+    <!-- categoryName mapping ile -->
+    <h2>{{ categoryNameMap[activeKey] }}</h2>
+  </div>
+
+  <div class="products-grid">
+    <div class="product-card" *ngFor="let product of products">
+      <img [src]="'/' + product.image" alt="{{ product.productName }}">
+      <h3 class="product-title">{{ product.productName }}</h3>
+      <p class="product-description">{{ product.description }}</p>
+      <div class="product-footer">
+        <span class="product-price">₺{{ product.price }}</span>
+      </div>
+    </div>
+  </div>
+</main>
+
+</div>

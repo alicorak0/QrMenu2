@@ -1,0 +1,69 @@
+
+<header class="company-header">
+
+  <div class="header-top">
+    <div class="marquee">
+      <span>📢 Dikkat! Yeni kampanyalar başladı! | İndirimler %50’ye kadar devam ediyor!</span>
+    </div>
+  </div>
+  <div class="headerBottom">
+
+    <div  class="logo">
+      <img   src="/QRMENULOGO.png" [routerLink]="['/categories']" style="cursor:pointer;" alt="LOGO">
+    </div>
+
+     <div class="menu-link">
+          <a class="menu-button" href="/categories">Menu</a>
+          <i class="fa-solid fa-utensils"></i>
+     </div>
+    
+    <!-- <div class="search">
+<fa-icon class="search-icon" [icon]="faSearch"></fa-icon>
+      <input type="text">
+    </div> -->
+
+  </div>
+
+  <!-- Popüler Ürünler Slider (Header altı şerit) -->
+  <!-- Popüler Ürünler Slider (Header altı şerit) -->
+  <div class="popular-slider">
+    <div class="swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide" *ngFor="let product of products">
+  <div class="product-card">
+
+    <!-- Image -->
+    <img 
+      [src]="'/' + product.image" alt="{{ product.productName }}"
+      [alt]="product.productName"
+      class="product-img"
+    >
+
+    <div class="product-info">
+      <!-- Product Name -->
+      <h4>{{ product.productName }}</h4>
+
+      <!-- Description -->
+      <p class="description">
+        {{ product.description }}
+      </p>
+
+      <!-- Tooltip (isteğe bağlı)
+      <span class="tooltip">
+        {{ product.tooltip }}
+      </span> -->
+
+      <!-- Price -->
+      <span class="price">₺{{ product.price }}</span>
+    </div>
+
+  </div>
+</div>
+
+      </div>
+    </div>
+  </div>
+
+
+
+</header>

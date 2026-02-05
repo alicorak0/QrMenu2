@@ -1,0 +1,83 @@
+/* Ortadaki container */
+.categories-container {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  max-width: 1000px;
+  /* Container genişliği */
+  margin: 0 auto;
+  /* Ortalar */
+  padding: 20px;
+  /* Sağ-solda boşluk */
+}
+
+/* Grid sistemi */
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  /* Masaüstü: 4 sütun */
+  gap: 20px;
+  margin-top: 100px;
+}
+
+/* Kart stili */
+.category-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+  border: 2px solid #428533;
+  border-radius: 8px;
+  background-color: #f0f0f0;
+}
+
+.category-card h3 {
+  margin: 0;
+  font-weight: 600;
+  font-size: 18px;
+  color: #428533;
+  text-align: center;
+}
+
+/* Tablet (600px - 900px) → 2 sütun */
+@media (max-width: 900px) {
+  .categories-grid {
+    grid-template-columns: repeat(2, 1fr);
+    display: grid;
+    gap: 15px;
+    margin-top: 40px;
+  }
+
+  .category-card h3 {
+    margin: 0;
+    font-weight: 600;
+    font-size: 20px;
+    color: #428533;
+    text-align: center;
+  }
+}
+
+/* Mobil (<600px) → 1 sütun */
+@media (max-width: 600px) {
+
+  .category-card {
+    height: 50px;
+    border: 2px solid #428533;
+    border-radius: 8px;
+    background-color: #f0f0f0;
+  }
+
+  .categories-grid {
+    grid-template-columns: 1fr;
+    display: grid;
+    gap: 15px;
+    margin-top: 40px;
+  }
+
+  .category-card h3 {
+    margin: 0;
+    font-weight: 600;
+    font-size: 20px;
+    color: #428533;
+    text-align: center;
+  }
+}
