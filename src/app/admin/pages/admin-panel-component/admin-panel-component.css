@@ -1,0 +1,58 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+main {
+    background: -webkit-gradient(linear, left bottom, right bottom,
+            color-stop(0, #012509),
+            color-stop(1, #10592b));
+    ;
+    min-height: 100vh;
+    font-family: "Montserrat", sans-serif;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 60px;
+    height: 150px;
+}
+
+.header-left img {
+    height: 50px;
+
+}
+
+/* Sağ üst kullanıcı alanı */
+.header-right {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.user-div {
+    display: flex;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 10px 16px;
+    gap: 3px;
+}
+
+.log-out {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 10px 16px;
+    cursor: pointer;
+}
+
+.header-right i {
+    font-size: 14px;
+}
