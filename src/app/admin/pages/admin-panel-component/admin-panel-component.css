@@ -22,7 +22,7 @@ main {
 }
 
 .header-left img {
-    height: 50px;
+    height: 60px;
 
 }
 
@@ -55,4 +55,52 @@ main {
 
 .header-right i {
     font-size: 14px;
+}
+
+.sidebar {
+    background-color: #f4f7fb;
+    width: 80px;
+    padding: 20px 10px;
+    transition: width 0.3s ease;
+    border-radius: 20px;
+    margin-left: 30px;
+    margin-top: 50px;
+}
+
+.sidebar.open {
+    width: 300px;
+}
+
+.menu-title {
+    font-weight: 700;
+    font-size: 18px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.menu-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.menu-list li {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 14px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.menu-list li:hover {
+    background-color: #7be195;
+    color: #fff;
+}
+
+.menu-list i {
+    font-size: 18px;
 }

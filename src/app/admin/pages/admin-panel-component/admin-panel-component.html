@@ -1,22 +1,50 @@
 <main>
     <header class="header">
         <div class="header-left">
-<img [src]="'https://localhost:44311/uploads/products/QRMENULOGOBEYAZ.png'" alt="QR Menu Logo">
+            <img [src]="'https://localhost:44311/uploads/products/QRMENULOGOBEYAZ.png'" alt="QR Menu Logo">
         </div>
 
 
         <div class="header-right">
 
-        <div class="user-div">
-            <i class="fa-solid fa-user"></i>
-            <span class="user-id">USER00001</span>
+            <div class="user-div">
+                <i class="fa-solid fa-user"></i>
+                <span class="user-id">USER00001</span>
+            </div>
+
+            <div class="log-out">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+            </div>
+
         </div>
 
-        <div class="log-out">
-            <i class="fa-solid fa-arrow-right-from-bracket"></i>
-        </div>
-
-        </div>
-        
     </header>
+
+    <aside class="sidebar" [class.open]="isSidebarOpen" (mouseenter)="openSidebar()" (mouseleave)="closeSidebar()">
+        <div class="menu-title">MENÜ</div>
+
+        <ul class="menu-list">
+            <li (click)="closeSidebar()">
+                <i class="fa-solid fa-wifi"></i>
+                <span *ngIf="isSidebarOpen">Kategori Ekleme</span>
+            </li>
+
+            <li (click)="closeSidebar()">
+                <i class="fa-solid fa-wifi"></i>
+                <span *ngIf="isSidebarOpen">Kategori Düzenleme</span>
+            </li>
+
+            <li (click)="closeSidebar()">
+                <i class="fa-solid fa-wifi"></i>
+                <span *ngIf="isSidebarOpen">Ürün Ekleme</span>
+            </li>
+
+            <li (click)="closeSidebar()">
+                <i class="fa-solid fa-wifi"></i>
+                <span *ngIf="isSidebarOpen">Ürün Düzenleme</span>
+            </li>
+        </ul>
+    </aside>
+
+
 </main>
