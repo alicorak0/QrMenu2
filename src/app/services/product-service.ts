@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Product } from '../models/productModel';
 import { HttpClientModule } from '@angular/common/http'; // ← ekle
+import { SingleResponseModel } from '../models/singleResponseModel';
 
 @Injectable({
   providedIn: 'root',
@@ -26,6 +27,10 @@ export class ProductService {
   getFeaturedProducts(): Observable<{ data: Product[] }> {
     return this.http.get<{ data: Product[] }>(`https://localhost:44311/api/featuredproducts/getall
 `);
+  }
+
+  productSearch(name: string):Observable<SingleResponseModel<Product[]>> {
+    return this.http.get<SingleResponseModel<Product[]>>(`https://localhost:44311/api/products/search?name=${name}`);
   }
 
 }

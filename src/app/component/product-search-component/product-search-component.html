@@ -1,0 +1,80 @@
+<!-- TOGGLE -->
+<input type="checkbox" id="searchToggle" hidden />
+
+
+<!-- SAYFA SEARCH INPUT -->
+<label for="searchToggle" class="fake-search">
+  <span class="icon">🔍</span>
+  <span>Ürün ara...</span>
+</label>
+
+
+<!-- BACKDROP -->
+<label for="searchToggle" class="drawer-backdrop"></label>
+
+
+
+<!-- RIGHT DRAWER -->
+<div class="search-drawer">
+
+  <!-- HEADER -->
+  <div class="drawer-header">
+    <h3>Arama</h3>
+    <label for="searchToggle" class="close">✕</label>
+  </div>
+
+
+  <!-- SEARCH INPUT -->
+  <div class="drawer-search">
+    <span class="icon">🔍</span>
+    <input type="text" [(ngModel)]="searchName" placeholder="Arama Yapın..." />
+  </div>
+
+
+  <!-- SCROLL CONTENT -->
+  <div class="drawer-content">
+
+<!-- Sadece ara’ya basıldıysa göster -->
+<div *ngIf="searched && noResults" class="no-results">
+  <!-- Input boşsa → büyüteç -->
+  <i *ngIf="searchResponseMessage === 'Bir ürün adı girin'" class="fa-solid fa-circle-info fa-2x"></i>
+
+  <!-- Input dolu ama ürün yoksa → boş kutu icon -->
+  <i *ngIf="searchResponseMessage === 'Sonuç Bulunamadı'" class="fa-solid fa-box-open fa-3x"></i>
+
+  <span>{{ searchResponseMessage }}</span>
+</div>
+
+    <div class="product-card" *ngFor="let product of products">
+
+      <!-- LEFT INFO -->
+      <div class="product-info">
+        <h3 class="product-title">{{ product.productName }}</h3>
+
+        <p class="product-description">
+          {{ product.description }}
+        </p>
+
+        <span class="product-price">{{ product.price }}</span>
+      </div>
+
+
+      <!-- RIGHT IMAGE -->
+      <div class="product-image-wrapper">
+       <img [src]="'https://localhost:44311/uploads/products/' + product.image" alt="{{ product.image }}">
+
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- FIXED FOOTER -->
+  <div class="drawer-footer">
+    <button class="primary"  (click)="onSearch()" >Ara</button>
+    <button class="outline">Filtrele</button>
+  </div>
+
+</div>

@@ -7,6 +7,7 @@ import { MainLayoutComponent } from "./layout/main-layout-component/main-layout-
 import { LoginComponent } from "./admin/pages/login-component/login-component";
 import { AdminPanelComponent } from "./admin/pages/admin-panel-component/admin-panel-component";
 import { adminGuardsGuard } from "./guards/admin-guards-guard";
+import { ProductSearchComponent } from "./component/product-search-component/product-search-component";
 const routes: Routes = [
   {
     path: '',
@@ -29,7 +30,9 @@ const routes: Routes = [
     //   { path: 'categories', component: CategoriesComponent }
     // ]
   },
-
+   {
+    path:'productsearch',component:ProductSearchComponent
+   },  
 
   { path: '**', redirectTo: '' }
 ];

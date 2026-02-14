@@ -5,16 +5,38 @@ import { ProductService } from '../../services/product-service';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { HttpClient } from '@angular/common/http'; // ← ekle
+import { HttpClient } from '@angular/common/http'; 
 import { NgModule } from '@angular/core';
+import { ProductSearchComponent } from '../product-search-component/product-search-component';
+import { ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+
+
 @Component({
   selector: 'app-products-component',
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, ProductSearchComponent],
   templateUrl: './products-component.html',
   styleUrl: './products-component.css',
 })
-export class ProductsComponent {
+export class ProductsComponent implements AfterViewInit {
+@ViewChild('bgVideo') bgVideo!: ElementRef<HTMLVideoElement>;
 
+ngAfterViewInit() {
+  const vid = this.bgVideo.nativeElement;
+
+  vid.muted = true;
+
+  const tryPlay = () => {
+    vid.play().catch(() => {
+      setTimeout(() => vid.play(), 300);
+    });
+  };
+
+  if (vid.readyState >= 2) {
+    tryPlay();
+  } else {
+    vid.onloadeddata = tryPlay;
+  }
+}
   products: Product[] = [];
 
   constructor(private route: ActivatedRoute, private productService: ProductService) {}

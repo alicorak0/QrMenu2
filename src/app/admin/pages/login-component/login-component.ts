@@ -6,8 +6,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 //auth service gelecek
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { AuthService } from '../../../services/auth-service';
-import{jwtDecode } from 'jwt-decode';
+import { jwtDecode } from 'jwt-decode';
 import { Router } from '@angular/router';
+import { MeResponseModel } from '../../../models/meResponseModel';
 
 declare var LoginJs: any;
 
@@ -19,14 +20,16 @@ declare var LoginJs: any;
   styleUrl: './login-component.css',
 })
 export class LoginComponent implements AfterViewInit {
-  userName: string = ''; // <-- burayı ekle
-  userEmail: string = ''; // <-- burayı ekle
 
-  loginForm!: FormGroup; 
-  constructor(private router: Router,private formBuilder: FormBuilder,private authService:AuthService, private toastrService: ToastrService) {
+  loginForm!: FormGroup;
+  constructor(private router: Router, private formBuilder: FormBuilder, private authService: AuthService, private toastrService: ToastrService) {
 
     this.createLoginForm();
   }
+
+
+
+
 
   ngAfterViewInit() {
     if (LoginJs) {
@@ -49,44 +52,42 @@ export class LoginComponent implements AfterViewInit {
 
 
   login() {
-
-    console.log("login fonksiyonu çalıştı");
-
-     if(this.loginForm.invalid){
-      this.toastrService.error("Lütfen tüm alanları doldurunuz","Hata");
+    if (this.loginForm.invalid) {
+      this.toastrService.error('Lütfen tüm alanları doldurunuz', 'Hata');
       return;
-     }
-
-    else  {
-      let loginModel = Object.assign({},this.loginForm.value) // bağımsız bir kopya yapıyoruz aslında
-
-   this.authService.login(loginModel).subscribe(response=>{
-
-console.log(this.authService.getUser());
-
-        
-    localStorage.setItem("token",response.data.token)
-
-    // gelen tokeni işleyelim
-
-// const decodedToken: any = jwtDecode(response.data.token);
-//     console.log(decodedToken);
-
-      // decodedToken içinden kullanıcı bilgilerini alabilirsin
-    this.userName = this.authService.getUserName();
-    this.userEmail = this.authService.getUserEmail();
-
-   this.toastrService.info(`Hoşgeldiniz ${this.userName}`,"Giriş Başarılı");
-  this.router.navigate(['/admin']);
-
-   // gelen tokeni tarayıcıya kaydedelim
-
- },responseError=>{
-  this.toastrService.error(responseError.error)
- })
-
     }
+
+    const loginModel = Object.assign({}, this.loginForm.value);
+
+    this.authService.login(loginModel).subscribe({
+      next: () => {
+        // Login başarılı → servis üzerinden user bilgilerini al
+        this.authService.me().subscribe({
+          next: () => {
+            // artık component içinde currentUser=... yok
+            this.toastrService.success('Giriş Başarılı', 'Hoşgeldiniz');
+            //mesela burada kullanıcı bilgielrisi serviceden alabilirim
+            // const user = this.authService['currentUserSubject'].value;
+            // console.log(user?.fullName);
+
+
+            this.router.navigate(['/admin']);
+          },
+          error: () => {
+            this.toastrService.error('Kullanıcı bilgisi alınamadı', 'Hata');
+          }
+        });
+      },
+      error: err => {
+        this.toastrService.error(err.error?.message || 'Giriş başarısız', 'Hata');
+      }
+    });
   }
 
 
+
+
 }
+
+
+

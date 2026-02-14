@@ -7,10 +7,11 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ProductsComponent } from './component/products-component/products-component';
 import { HttpClient } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
-  imports: [HeaderComponent,CategoriesComponent,RouterOutlet,RouterModule,FontAwesomeModule,HttpClientModule,ProductsComponent],
+  imports: [HeaderComponent,FormsModule,CategoriesComponent,RouterOutlet,RouterModule,FontAwesomeModule,HttpClientModule,ProductsComponent],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

@@ -1,73 +1,92 @@
 <div class="menu-wrapper">
- <aside class="sidebar">
+  <!-- Sidebar -->
+  <aside class="sidebar">
     <ul>
-        <li>
-      <button 
-        [routerLink]="['/categories', 'burgers']" 
-        class="sidebar-btn" 
-        [class.active]="activeKey === 'burgers'">
-        Burgerler
-      </button>
-    </li>
+      <li>
+        <button 
+          [routerLink]="['/categories', 'burgers']" 
+          class="sidebar-btn" 
+          [class.active]="activeKey === 'burgers'">
+          Burgerler
+        </button>
+      </li>
 
-    <li>
-      <button 
-        [routerLink]="['/categories', 'snacks']" 
-        class="sidebar-btn" 
-        [class.active]="activeKey === 'snacks'">
-        Aperatifler
-      </button>
-    </li>
+      <li>
+        <button 
+          [routerLink]="['/categories', 'snacks']" 
+          class="sidebar-btn" 
+          [class.active]="activeKey === 'snacks'">
+          Aperatifler
+        </button>
+      </li>
 
-    <li>
-      <button 
-        [routerLink]="['/categories', 'drinks']" 
-        class="sidebar-btn" 
-        [class.active]="activeKey === 'drinks'">
-        İçecekler
-      </button>
-    </li>
+      <li>
+        <button 
+          [routerLink]="['/categories', 'drinks']" 
+          class="sidebar-btn" 
+          [class.active]="activeKey === 'drinks'">
+          İçecekler
+        </button>
+      </li>
 
-    <li>
-      <button 
-        [routerLink]="['/categories', 'desserts']" 
-        class="sidebar-btn" 
-        [class.active]="activeKey === 'desserts'">
-        Tatlılar
-      </button>
-    </li>
+      <li>
+        <button 
+          [routerLink]="['/categories', 'desserts']" 
+          class="sidebar-btn" 
+          [class.active]="activeKey === 'desserts'">
+          Tatlılar
+        </button>
+      </li>
 
-    <li>
-      <button 
-        [routerLink]="['/categories', 'sauces']" 
-        class="sidebar-btn" 
-        [class.active]="activeKey === 'sauces'">
-        Soslar
-      </button>
-    </li>
-
+      <li>
+        <button 
+          [routerLink]="['/categories', 'sauces']" 
+          class="sidebar-btn" 
+          [class.active]="activeKey === 'sauces'">
+          Soslar
+        </button>
+      </li>
     </ul>
   </aside>
 
+<div class="hero-video">
+  <video
+  #bgVideo
+  muted
+  loop
+  playsinline
+  preload="auto">
+  <source src="/tavuk.mp4" type="video/mp4">
+</video>
+</div>
 
 
-   <!-- Main Content -->
-  <main class="menu-content">
-  <div class="category-title">
-    <!-- categoryName mapping ile -->
-    <h2>{{ categoryNameMap[activeKey] }}</h2>
-  </div>
+  <!-- Main wrapper: Search + Content -->
+  <div class="menu-main">
+    <!-- Search Component -->
+    <app-product-search-component></app-product-search-component>
 
-  <div class="products-grid">
-    <div class="product-card" *ngFor="let product of products">
-<img [src]="'https://localhost:44311/uploads/products/' + product.image" alt="{{ product.image }}">
-      <h3 class="product-title">{{ product.productName }}</h3>
-      <p class="product-description">{{ product.description }}</p>
-      <div class="product-footer">
-        <span class="product-price">₺{{ product.price }}</span>
+    <!-- Main Content -->
+    <main class="menu-content">
+      <div class="category-title">
+        <h2>{{ categoryNameMap[activeKey] }}</h2>
       </div>
-    </div>
-  </div>
-</main>
 
+      <div class="products-grid">
+        <div class="product-card" *ngFor="let product of products">
+          <img [src]="'https://localhost:44311/uploads/products/' + product.image" alt="{{ product.image }}">
+          <h3 class="product-title">{{ product.productName }}</h3>
+          <p class="product-description">{{ product.description }}</p>
+          <div class="product-footer">
+            <span class="product-price">₺{{ product.price }}</span>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+
+
+
+  
 </div>

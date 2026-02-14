@@ -1,4 +1,6 @@
 /* Genel sayfa */
+
+
 main {
   font-family: "Montserrat", sans-serif;
   font-size: 10px;
@@ -8,6 +10,16 @@ main {
   padding: 0;
   overflow-x: hidden;
 }
+
+
+/* Menü ana alan: search + main content alt alta */
+.menu-main {
+  flex: 1; /* kalan alanı kapla */
+  display: flex;
+  flex-direction: column; /* üst üste diz */
+  gap: 20px; /* search ve main arası boşluk */
+}
+
 
 /* Wrapper */
 .menu-wrapper {
@@ -223,4 +235,18 @@ main {
     opacity: 1;
     transform: translateY(0);
   }
+}
+/* Hero video */
+.hero-video {
+  position: relative;
+
+  overflow: hidden;
+  z-index: 20000;
+}
+
+.hero-video video {
+ 
+  width: 150px;
+  object-fit: cover;   /* ekranı tamamen kaplar */
+  pointer-events: none; /* hover + click kapatır */
 }
