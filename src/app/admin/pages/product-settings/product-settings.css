@@ -1,0 +1,38 @@
+.flex-row {
+  display: flex;
+  gap: 20px; /* aradaki boşluk */
+  flex-wrap: nowrap; /* alt satıra geçmesin */
+}
+
+.flex-col-left {
+  flex: 2; /* tabloya daha fazla alan ver */
+  min-width: 500px; /* çok dar ekranda bile yan yana */
+}
+
+.flex-col-right {
+  flex: 1; /* form daha az alan */
+  min-width: 300px;
+}
+
+/* tablo scroll için */
+.table-wrapper {
+  max-height: 670px;
+  overflow-y: auto;
+  overflow-x: auto;
+}
+
+.layout-cell {
+  max-width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.content-title {
+  color: white;
+  margin-bottom: 20px;
+}
+
+.container{
+  padding-bottom: 55px;
+}

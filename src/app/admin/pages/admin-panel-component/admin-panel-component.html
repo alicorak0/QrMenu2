@@ -9,7 +9,7 @@
 
             <div class="user-div">
                 <i class="fa-solid fa-user"></i>
-                <span class="user-id">USER00001</span>
+                <span class="user-id">  {{ currentUser?.fullName || 'Yükleniyor...' }}</span>
             </div>
 
             <div class="log-out" (click)="logout()">
@@ -34,17 +34,20 @@
                 <span *ngIf="isSidebarOpen">Kategori Düzenleme</span>
             </li>
 
-            <li (click)="closeSidebar()">
+            <li [routerLink]="['product-add']" (click)="closeSidebar()">
                 <i class="fa-solid fa-wifi"></i>
-                <span *ngIf="isSidebarOpen">Ürün Ekleme</span>
+                <span *ngIf="isSidebarOpen">Ürün Ekleme</span>          
             </li>
 
-            <li (click)="closeSidebar()">
+            <li [routerLink]="['product-settings']" (click)="closeSidebar()">
                 <i class="fa-solid fa-wifi"></i>
                 <span *ngIf="isSidebarOpen">Ürün Düzenleme</span>
             </li>
         </ul>
     </aside>
 
+        <section class="content">
+            <router-outlet></router-outlet>
+        </section>
 
 </main>

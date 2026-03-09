@@ -1,20 +1,32 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 // import { UploadPhotoService } from '../../../services/upload-photo-service';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../../services/auth-service';
 import { Router } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-admin-panel-component',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterOutlet, RouterModule],
   templateUrl: './admin-panel-component.html',
   styleUrl: './admin-panel-component.css',
 })
-export class AdminPanelComponent {
+export class AdminPanelComponent implements OnInit {
+
+
 
   isSidebarOpen = false;
   constructor(private authService: AuthService, private router: Router) {}
+
+   currentUser : any;
+
+  ngOnInit(): void {
+    this.currentUser  = this.authService['currentUserSubject'].value;
+
+  }
+
 
   openSidebar() {
     this.isSidebarOpen = true;

@@ -1,0 +1,7 @@
+.file-name{
+    margin-left: 10px;
+}
+
+input:-webkit-autofill {
+  -webkit-text-fill-color: white !important; /* text rengi */
+}

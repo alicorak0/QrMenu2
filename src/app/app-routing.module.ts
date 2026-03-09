@@ -1,4 +1,4 @@
-import {  RouterModule,Routes } from "@angular/router";
+import {  RouterModule,Routes,ExtraOptions } from "@angular/router";
 import { NgModule } from "@angular/core";
 import { CategoriesComponent } from "./component/categories-component/categories-component";
 import { HeaderComponent } from "./component/header-component/header-component";
@@ -8,6 +8,8 @@ import { LoginComponent } from "./admin/pages/login-component/login-component";
 import { AdminPanelComponent } from "./admin/pages/admin-panel-component/admin-panel-component";
 import { adminGuardsGuard } from "./guards/admin-guards-guard";
 import { ProductSearchComponent } from "./component/product-search-component/product-search-component";
+import { ProductSettings } from "./admin/pages/product-settings/product-settings";
+import { ProductAddComponent } from "./admin/pages/product-add-component/product-add-component";
 const routes: Routes = [
   {
     path: '',
@@ -24,11 +26,11 @@ const routes: Routes = [
     path: 'admin',
     component: AdminPanelComponent,
     canActivate: [adminGuardsGuard],
-    // children: [
+     children: [
     //   { path: '', redirectTo: 'products', pathMatch: 'full' },
-    //   { path: 'products', component: ProductsComponent },
-    //   { path: 'categories', component: CategoriesComponent }
-    // ]
+       { path: 'product-settings', component: ProductSettings },
+       { path: 'product-add', component: ProductAddComponent }
+     ]
   },
    {
     path:'productsearch',component:ProductSearchComponent
@@ -36,6 +38,12 @@ const routes: Routes = [
 
   { path: '**', redirectTo: '' }
 ];
+
+
+const routerOptions: ExtraOptions = {
+  scrollPositionRestoration: 'enabled', // veya 'top'
+  anchorScrolling: 'enabled',
+};
 
 @NgModule({
 

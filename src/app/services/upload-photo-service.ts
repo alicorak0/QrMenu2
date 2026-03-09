@@ -16,4 +16,8 @@ export class UploadPhotoService {
 
     return this.http.post<{ fileName: string, url: string }>(this.api, formData);
   }
+
+
+
+
 }

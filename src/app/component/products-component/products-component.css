@@ -250,3 +250,7 @@ main {
   object-fit: cover;   /* ekranı tamamen kaplar */
   pointer-events: none; /* hover + click kapatır */
 }
+
+input:-webkit-autofill {
+  -webkit-text-fill-color: white !important; /* text rengi */
+}

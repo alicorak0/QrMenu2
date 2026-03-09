@@ -1,106 +1,140 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+/* BODY / MAIN */
 main {
-    background: -webkit-gradient(linear, left bottom, right bottom,
-            color-stop(0, #012509),
-            color-stop(1, #10592b));
-    ;
-    min-height: 100vh;
-    font-family: "Montserrat", sans-serif;
+  min-height: 100vh;
+  background: linear-gradient(to right, #012509, #10592b);
+  font-family: "Montserrat", sans-serif;
+  position: relative;
 }
 
+/* HEADER */
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 24px 60px;
-    height: 150px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 60px;
+  height: 150px;
+  z-index: 10;
+  position: relative;
 }
 
 .header-left img {
-    height: 60px;
-
+  height: 60px;
 }
 
-/* Sağ üst kullanıcı alanı */
 .header-right {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-
-    font-weight: 600;
-    font-size: 15px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-weight: 600;
+  font-size: 15px;
 }
 
-.user-div {
-    display: flex;
-    background-color: #fff;
-    border-radius: 10px;
-    padding: 10px 16px;
-    gap: 3px;
-}
-
-.log-out {
-    background-color: #fff;
-    border-radius: 10px;
-    padding: 10px 16px;
-    cursor: pointer;
+.user-div, .log-out {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 10px 16px;
+  cursor: pointer;
+  gap: 3px;
 }
 
 .header-right i {
-    font-size: 14px;
+  font-size: 14px;
 }
 
+/* SIDEBAR OVERLAY */
 .sidebar {
-    background-color: #f4f7fb;
-    width: 80px;
-    padding: 20px 10px;
-    transition: width 0.3s ease;
-    border-radius: 20px;
-    margin-left: 30px;
-    margin-top: 50px;
+  width: 80px;
+  height: calc(100vh - 150px); /* header altına */
+  background-color: #f4f7fb;
+  padding: 20px 10px;
+  border-radius: 20px;
+  position: absolute;  /* FIXED yaparak overlay */
+  top: 150px;       /* header altı */
+  left: 0;
+  z-index: 20;
+  transition: width 0.3s ease;
+  overflow: hidden;
 }
 
 .sidebar.open {
-    width: 300px;
+  width: 300px;
 }
 
+/* MENU */
 .menu-title {
-    font-weight: 700;
-    font-size: 18px;
-    margin-bottom: 20px;
-    text-align: center;
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
 .menu-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .menu-list li {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    padding: 14px;
-    border-radius: 12px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: background 0.2s ease, color 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 14px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
 .menu-list li:hover {
-    background-color: #7be195;
-    color: #fff;
+  background-color: #7be195;
+  color: #fff;
 }
 
 .menu-list i {
-    font-size: 18px;
+  font-size: 18px;
+}
+
+/* CONTENT ALANI */
+.content {
+  margin: 0;
+  padding: 25px 40px;
+  border-radius: 20px;
+  min-height: calc(100vh - 150px);
+  overflow-x: auto;
+  position: relative;
+  z-index: 1; /* sidebar üstte kalacak */
+}
+
+/* CARD & TABLO */
+.card {
+  background: #fff;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+}
+
+.card-header {
+  padding: 12px 20px;
+  font-weight: 700;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.card-body {
+  padding: 15px 20px;
+}
+
+table {
+  width: 100%;
+  table-layout: auto;
 }

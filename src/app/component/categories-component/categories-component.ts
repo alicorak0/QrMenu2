@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { Router } from '@angular/router';
 import path from 'path';
+import { Category } from '../../models/categoryModel';
 
 @Component({
   selector: 'app-categories-component',
@@ -11,11 +12,16 @@ import path from 'path';
   styleUrl: './categories-component.css',
 })
 export class CategoriesComponent {
-  categories = [
-    { id: 1, name: 'Burgerler',pathUrl:"burgers" },
-    { id: 3, name: 'Aperatifler',pathUrl:"snacks" },
-    { id: 4, name: 'İçecekler', pathUrl:"drinks"},
-    { id: 5, name: 'Tatlılar',pathUrl:"sweets" },
-    { id: 6, name: 'Soslar' ,pathUrl:"sauces" }
-  ];
+
+  // categories: Category[] = [];
+
+
+
+   categories = [
+     { id: 1, name: 'Burgerler',pathUrl:"burgers" },
+     { id: 3, name: 'Aperatifler',pathUrl:"snacks" },
+     { id: 4, name: 'İçecekler', pathUrl:"drinks"},
+     { id: 5, name: 'Tatlılar',pathUrl:"sweets" },
+     { id: 6, name: 'Soslar' ,pathUrl:"sauces" }
+   ];
 }
