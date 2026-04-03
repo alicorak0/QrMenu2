@@ -1,0 +1,54 @@
+.verify-container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 30px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  background-color: #fff;
+}
+
+.verify-container h2 {
+  margin-bottom: 15px;
+}
+
+.verify-container input {
+  width: 80%;
+  padding: 10px;
+  font-size: 16px;
+  margin-bottom: 15px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.verify-container button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.verify-container button:hover {
+  background-color: #0056b3;
+}
+
+.resend-text {
+  margin-top: 15px;
+}
+
+.resend-text button {
+  background: none;
+  border: none;
+  color: #007bff;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.resend-text button:hover {
+  color: #0056b3;
+}

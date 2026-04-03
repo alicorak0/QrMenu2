@@ -1,0 +1,19 @@
+<div class="verify-container">
+  <h2>Email Doğrulama</h2>
+  <p>Lütfen mailinize gönderilen 6 haneli kodu giriniz:</p>
+
+  <form [formGroup]="verifyForm" (ngSubmit)="verify()">
+    <input
+      type="text"
+      formControlName="code"
+      placeholder="6 haneli kod"
+      maxlength="6"
+    />
+    <button type="submit">Doğrula</button>
+  </form>
+
+  <p class="resend-text">
+    Kod gelmedi mi?
+    <button (click)="resendCode()">Tekrar Gönder</button>
+  </p>
+</div>

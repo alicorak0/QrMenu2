@@ -7,6 +7,9 @@ import { jwtDecode} from 'jwt-decode';
 import { BehaviorSubject, Observable,of } from 'rxjs';
 import { MeResponseModel } from '../models/meResponseModel';
 import { map, catchError } from 'rxjs/operators';
+import { RegisterModel } from '../models/registerModel';
+import { VerifyEmailModel } from '../models/verifyEmailModel';
+
 
 @Injectable({
   providedIn: 'root',
@@ -25,6 +28,7 @@ private currentUserSubject = new BehaviorSubject<MeResponseModel | null>(null);
     return this.httpClient.post(this.apiUrl + 'login', loginModel, { withCredentials: true });
   }
 
+
   me(): Observable<MeResponseModel> {
   return this.httpClient.get<MeResponseModel>(this.apiUrl + 'me', { withCredentials: true }).pipe(
     map(user => {
@@ -35,9 +39,10 @@ private currentUserSubject = new BehaviorSubject<MeResponseModel | null>(null);
 }
 
 
+
   // Kişi authentice mi ?
 
-   isAuthenticated(): Observable<boolean> {
+    isAuthenticated(): Observable<boolean> {
     return this.httpClient.get(this.apiUrl + 'me', { withCredentials: true }).pipe(
       map(_ => true),
       catchError(_ => of(false))
@@ -57,6 +62,20 @@ logout(): Observable<any> {
 get currentUserValue(): MeResponseModel | null {
   return this.currentUserSubject.value;
 }
+
+register(model: RegisterModel): Observable<any> {
+    return this.httpClient.post(`${this.apiUrl}register`, model);
+  }
+
+  verifyEmail(model: VerifyEmailModel): Observable<any> {
+    return this.httpClient.post(`${this.apiUrl}verify-email`, model);
+  }
+
+// auth.service.ts
+resendCode(payload: { Email: string }): Observable<any> {
+  return this.httpClient.post(`${this.apiUrl}resend-code`, payload);
+}
+
 
 
 }

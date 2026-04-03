@@ -9,6 +9,7 @@ import { AuthService } from '../../../services/auth-service';
 import { jwtDecode } from 'jwt-decode';
 import { Router } from '@angular/router';
 import { MeResponseModel } from '../../../models/meResponseModel';
+import { log } from 'console';
 
 declare var LoginJs: any;
 
@@ -60,17 +61,19 @@ export class LoginComponent implements AfterViewInit {
     const loginModel = Object.assign({}, this.loginForm.value);
 
     this.authService.login(loginModel).subscribe({
-      next: () => {
-        // Login başarılı → servis üzerinden user bilgilerini al
+      next: (res: any) => {
+
+        if (res.requiresVerification) {
+          this.toastrService.warning('Lütfen e-mailinizi doğrulayın', 'Dikkat');
+          this.router.navigate(['/verify-email'], {
+            queryParams: { email: loginModel.email }  // backend’den dönen email’i query param olarak gönder
+          }); return;
+        }
+
+        // normal login başarılıysa
         this.authService.me().subscribe({
           next: () => {
-            // artık component içinde currentUser=... yok
             this.toastrService.success('Giriş Başarılı', 'Hoşgeldiniz');
-            //mesela burada kullanıcı bilgielrisi serviceden alabilirim
-            // const user = this.authService['currentUserSubject'].value;
-            // console.log(user?.fullName);
-
-
             this.router.navigate(['/admin']);
           },
           error: () => {

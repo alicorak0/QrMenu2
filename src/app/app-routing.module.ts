@@ -1,4 +1,4 @@
-import {  RouterModule,Routes,ExtraOptions } from "@angular/router";
+import { RouterModule, Routes, ExtraOptions } from "@angular/router";
 import { NgModule } from "@angular/core";
 import { CategoriesComponent } from "./component/categories-component/categories-component";
 import { HeaderComponent } from "./component/header-component/header-component";
@@ -10,6 +10,8 @@ import { adminGuardsGuard } from "./guards/admin-guards-guard";
 import { ProductSearchComponent } from "./component/product-search-component/product-search-component";
 import { ProductSettings } from "./admin/pages/product-settings/product-settings";
 import { ProductAddComponent } from "./admin/pages/product-add-component/product-add-component";
+import { RegisterComponent } from "./admin/pages/register-component/register-component";
+import { VerifyEmailComponent } from "./admin/pages/verify-email-component/verify-email-component";
 const routes: Routes = [
   {
     path: '',
@@ -22,19 +24,26 @@ const routes: Routes = [
   },
   { path: 'login', component: LoginComponent },
 
- {
+  {
     path: 'admin',
     component: AdminPanelComponent,
     canActivate: [adminGuardsGuard],
-     children: [
-    //   { path: '', redirectTo: 'products', pathMatch: 'full' },
-       { path: 'product-settings', component: ProductSettings },
-       { path: 'product-add', component: ProductAddComponent }
-     ]
+    children: [
+      //   { path: '', redirectTo: 'products', pathMatch: 'full' },
+      { path: 'product-settings', component: ProductSettings },
+      { path: 'product-add', component: ProductAddComponent }
+    ]
   },
-   {
-    path:'productsearch',component:ProductSearchComponent
-   },  
+
+  { path: 'register', component:RegisterComponent },
+  { path: 'verify-email', component:VerifyEmailComponent },
+
+
+
+  {
+    path: 'productsearch', component: ProductSearchComponent
+  },
+ 
 
   { path: '**', redirectTo: '' }
 ];
@@ -47,11 +56,11 @@ const routerOptions: ExtraOptions = {
 
 @NgModule({
 
-    imports:[RouterModule.forRoot(routes)],
-    exports:[RouterModule]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
 })
 
-export class  AppRoutingModule{
+export class AppRoutingModule {
 
 }
 

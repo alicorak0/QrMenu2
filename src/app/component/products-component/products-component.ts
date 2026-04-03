@@ -61,13 +61,15 @@ categoryNameMap: { [key: string]: string } = {
   this.route.params.subscribe(params => {
     this.activeKey = params['name']; // burgers, snacks, desserts vs
 
+    console.log('Aktif kategori:', this.activeKey);
     if (this.activeKey) {
       this.loadProducts(this.activeKey); // kategori varsa
-    } else {
-      this.productService.getAllProducts().subscribe(res => {
-        this.products = res.data; // tüm ürünleri al
-      });
-    }
+    } 
+    // else {
+    //   this.productService.getAllProducts().subscribe(res => {
+    //     this.products = res.data; // tüm ürünleri al
+    //   });
+    // }
   });
 }
  loadProducts(category: string) {

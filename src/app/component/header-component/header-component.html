@@ -1,4 +1,3 @@
-
 <header class="company-header">
 
   <div class="header-top">
@@ -8,15 +7,15 @@
   </div>
   <div class="headerBottom">
 
-    <div  class="logo">
-      <img   src="/QRMENULOGO.png" [routerLink]="['/categories']" style="cursor:pointer;" alt="LOGO">
+    <div class="logo">
+      <img src="/QRMENULOGO.png" [routerLink]="['/categories']" style="cursor:pointer;" alt="LOGO">
     </div>
 
-     <div class="menu-link">
-          <a class="menu-button" href="/categories">Menu</a>
-          <i class="fa-solid fa-utensils"></i>
-     </div>
-    
+    <div class="menu-link">
+      <a class="menu-button" href="/categories">Menu</a>
+      <i class="fa-solid fa-utensils"></i>
+    </div>
+
     <!-- <div class="search">
 <fa-icon class="search-icon" [icon]="faSearch"></fa-icon>
       <input type="text">
@@ -30,35 +29,32 @@
     <div class="swiper">
       <div class="swiper-wrapper">
         <div class="swiper-slide" *ngFor="let product of products">
-  <div class="product-card">
+          <div class="product-card">
 
-    <!-- Image -->
-    <img 
-      [src]="'https://localhost:44311/uploads/products/' + product.image"
-      [alt]="product.productName"
-      class="product-img"
-    >
+            <!-- Image -->
+            <img [src]="'https://localhost:44311/uploads/products/' + product.image" [alt]="product.productName"
+              loading="lazy" class="product-img">
 
-    <div class="product-info">
-      <!-- Product Name -->
-      <h4>{{ product.productName }}</h4>
+            <div class="product-info">
+              <!-- Product Name -->
+              <h4>{{ product.productName }}</h4>
 
-      <!-- Description -->
-      <p class="description">
-        {{ product.description }}
-      </p>
+              <!-- Description -->
+              <p class="description">
+                {{ product.description }}
+              </p>
 
-      <!-- Tooltip (isteğe bağlı)
+              <!-- Tooltip (isteğe bağlı)
       <span class="tooltip">
         {{ product.tooltip }}
       </span> -->
 
-      <!-- Price -->
-      <span class="price">₺{{ product.price }}</span>
-    </div>
+              <!-- Price -->
+              <span class="price">₺{{ product.price }}</span>
+            </div>
 
-  </div>
-</div>
+          </div>
+        </div>
 
       </div>
     </div>
